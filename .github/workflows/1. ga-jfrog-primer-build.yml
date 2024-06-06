@@ -34,13 +34,25 @@ jobs:
               run: |
                 jf pipc --repo-resolve ${{ env.PIP_REMOTE_REPO }}
 
-            # Upto this point, nothing is reported to JFrog or GitHub
-            
-            # This is the first step that will add artifacts to JFrog
             - name: Install Python modules
               # Run 
               run: |
                 jf pip install -r requirements.txt
 
-            # 
+            # Upto this point, nothing is reported to JFrog or GitHub
+
+            # This steps will publish the build info to JFrog
+            # and show links in the GitHub Actions summary
+            # Make sure the project exists in JFrog ^ JF_PROJECT
+            - name: publish build info
+              run: |
+                jf rt build-collect-env 
+                jf rt build-add-dependencies .
+                jf rt build-add-git
+                jf rt build-publish
+            
+            - name: Scan the build
+              run: |
+                jf rt build-scan
+ 
             
