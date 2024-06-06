@@ -7,7 +7,7 @@ permissions:
   packages: write # for uploading attestations.
   contents: read
 jobs:
-    build-publish-python:
+    ga-jfrog-get-token:
         runs-on: ubuntu-latest
 
         steps:
