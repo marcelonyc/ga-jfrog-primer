@@ -1,0 +1,46 @@
+name: ga-jfrog-primer-build-1
+on: workflow_dispatch
+    
+permissions:
+  actions: read # for detecting the Github Actions environment.
+  id-token: write # for creating OIDC tokens for signing.
+  packages: write # for uploading attestations.
+  contents: read
+jobs:
+    ga-jfrog-build-1:
+        runs-on: ubuntu-latest
+        env:
+          PIP_REMOTE_REPO: ga-jfrog-pip-remote
+        steps:
+            # Use the specific setup-cli branch
+            - name: Setup JFrog CLI
+              uses: jfrog/setup-jfrog-cli@v4
+              id: setup-cli
+              env:
+                JF_URL: https://${{ vars.JF_URL }}/
+                JF_PROJECT: ${{ vars.JF_PROJECT }}
+              with:
+                  oidc-provider-name: ${{ vars.OIDC_PROVIDER_NAME }}
+
+            - name: Checkout the repository
+              uses: actions/checkout@v4
+            
+            - name: Set up Python 3.11
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.11"
+
+            - name: Configure pip
+              run: |
+                jf pipc --repo-resolve ${{ env.PIP_REMOTE_REPO }}
+
+            # Upto this point, nothing is reported to JFrog or GitHub
+            
+            # This is the first step that will add artifacts to JFrog
+            - name: Install Python modules
+              # Run 
+              run: |
+                jf pip install -r requirements.txt
+
+            # 
+            
