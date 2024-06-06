@@ -20,7 +20,7 @@ You can read detailed documentation about how OIDC works, but the most important
 
 
 ## 1.ga-jfrog-primer-oidc.yaml
-In this action we will explore the token we receive from GitHub. I am taking you trhrough this because you will need to understand the payload to construct a claim for the identity mapping. The only purpose of this action is to intercept the token and review it. 
+In this action we will explore the token we receive from GitHub. I am taking you through this because you will need to understand the payload to construct a claim for the identity mapping. The only purpose of this action is to intercept the token and review it. 
 
 NOTE: The action will fail.
 
@@ -36,7 +36,7 @@ NOTE: The action will fail.
 7. Go to https://jwt.io and paste the token into the Encoded text box.
 ![Image](assets/jwt-payload.png)
 
-Use the keys in your PAYLOAD DATA to setup Claims JSON in th eidentity mapping in JFRog. JFrog expects a key to match between GitHub and JFrog.
+Use the keys in your PAYLOAD DATA to setup Claims JSON in the identity mapping in JFRog. JFrog expects a key to match between GitHub and JFrog.
 
 For example
 
