@@ -1,0 +1,26 @@
+name: ga-jfrog-primer
+on: workflow_dispatch
+    
+permissions:
+  actions: read # for detecting the Github Actions environment.
+  id-token: write # for creating OIDC tokens for signing.
+  packages: write # for uploading attestations.
+  contents: read
+jobs:
+    build-publish-python:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Use the specific setup-cli branch
+            - name: Setup JFrog CLI
+              uses: jfrog/setup-jfrog-cli@v4
+              id: setup-cli
+              env:
+                JF_URL: https://${{ vars.JF_URL }}/
+                JF_PROJECT: ${{ vars.JF_PROJECT }}
+              with:
+                  oidc-provider-name: ${{ vars.OIDC_PROVIDER_NAME }}
+
+            - name: Checkout the repository
+              uses: actions/checkout@v4
+              
