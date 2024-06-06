@@ -7,7 +7,7 @@ Each build is configure to be executed manually.
 ## Pre-reqs
 You can read detailed documentation about how OIDC works, but the most important thing to understand is that GirHub and JFrog exchange tokens to validate each other's trust. 
 
-- Clone this project
+- Fork this project
 - Setup OIDC integration in JFrog
     - NOTE: **at this point, do not set identity mapping**
     - Provider Name: remember this, you will need it.
