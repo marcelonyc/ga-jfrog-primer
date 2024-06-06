@@ -23,4 +23,9 @@ jobs:
 
             - name: Checkout the repository
               uses: actions/checkout@v4
-              
+            
+            - name: Run a jfrog command
+              # Run a jfrog command to trigger the token exchnage
+              run: |
+                jf rt curl /api/repositories
+            
