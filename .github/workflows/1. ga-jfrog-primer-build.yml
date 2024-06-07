@@ -8,6 +8,7 @@ permissions:
   contents: read
 jobs:
     ga-jfrog-build-1:
+        name: ga-jfrog-build-${{ vars.UNIQUE_ID }}
         runs-on: ubuntu-latest
         env:
           PIP_REMOTE_REPO: ga-jfrog-pip-remote
@@ -43,7 +44,12 @@ jobs:
 
             # This steps will publish the build info to JFrog
             # and show links in the GitHub Actions summary
+            # https://docs.jfrog-applications.jfrog.io/jfrog-applications/jfrog-cli/cli-command-summaries
             # Make sure the project exists in JFrog ^ JF_PROJECT
+            - name: Upload files to Artifactory
+              run: |
+                jf rt u
+                
             - name: publish build info
               run: |
                 jf rt build-collect-env 
@@ -51,7 +57,11 @@ jobs:
                 jf rt build-add-git
                 jf rt build-publish
             
-            - name: Scan the build
+            - name: SCA
+              run: |
+                jf scan
+
+            - name: Trigger build scan
               run: |
                 jf rt build-scan
  

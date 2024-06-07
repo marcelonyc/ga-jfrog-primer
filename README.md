@@ -17,6 +17,10 @@ You can read detailed documentation about how OIDC works, but the most important
     - JF_URL:  JFrog Domain on (Eg. soleng.jfrog.io)
     - JF_PROJECT: Your project name
     - OIDC_PROVIDER_NAME: Provider name from above step 
+    - UNIQUE_ID: a text to use to identify your repos/project/build name in JFrog. I am setting this just to make this project more generic. 
+- Create these locations in artifactory
+    - ga-jfrog-pip-remote-<UNIQUE_ID>  Python remote repo
+    - 
 
 
 ## 1.ga-jfrog-primer-oidc.yaml
@@ -64,7 +68,8 @@ Eg. `{"sub" : "repo:marcelonyc/WebGoat:ref:refs/heads/main"}`
 Run the workflow again. This time it should succeed.
 
 
-
+## 1.ga-jfrog-primer-build.yaml
+A more complete example showing links to artifacts in JFrog.
 
 
 
