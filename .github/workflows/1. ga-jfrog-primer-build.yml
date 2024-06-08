@@ -8,10 +8,11 @@ permissions:
   contents: read
 jobs:
     ga-jfrog-build-1:
+        # To make this yaml usable by multiple projects
         name: ga-jfrog-build-${{ vars.UNIQUE_ID }}
         runs-on: ubuntu-latest
         env:
-          PIP_REMOTE_REPO: ga-jfrog-pip-remote
+          PIP_REMOTE_REPO: ga-jfrog-pip-remote-${{ vars.UNIQUE_ID }}
         steps:
             # Use the specific setup-cli branch
             - name: Setup JFrog CLI
@@ -46,14 +47,11 @@ jobs:
             # and show links in the GitHub Actions summary
             # https://docs.jfrog-applications.jfrog.io/jfrog-applications/jfrog-cli/cli-command-summaries
             # Make sure the project exists in JFrog ^ JF_PROJECT
-            - name: Upload files to Artifactory
-              run: |
-                jf rt u
                 
             - name: publish build info
               run: |
                 jf rt build-collect-env 
-                jf rt build-add-dependencies .
+                jf rt build-add-dependencies --from-rt ${{ env.PIP_REMOTE_REPO }}
                 jf rt build-add-git
                 jf rt build-publish
             
