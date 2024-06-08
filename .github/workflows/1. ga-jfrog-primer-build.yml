@@ -55,9 +55,9 @@ jobs:
                 jf rt build-add-git
                 jf rt build-publish
             
-            - name: SCA
-              run: |
-                jf scan
+            # - name: SCA
+            #   run: |
+            #     jf scan
 
             - name: Trigger build scan
               run: |
