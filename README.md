@@ -23,8 +23,9 @@ You can read detailed documentation about how OIDC works, but the most important
 - Create these locations in artifactory
     - ga-jfrog-pip-remote-<UNIQUE_ID>  Python remote repo
     - A project (whatever you call it in the JF_PROJECT variable)
+        - Add Python repo to project (Enable Xray Indexing)
     - (Optional: Xray) Add the build to index resources By Pattern
-        - Go to Administration->Xray Setting->Index Resources->Biulds->Manage Builds
+        - Go to Administration->Xray Setting->Index Resources->Builds->Manage Builds
         - Select By Pattern
         - Build Name Include Pattern: ga-jfrog-build-<UNIQUE_ID>
 
