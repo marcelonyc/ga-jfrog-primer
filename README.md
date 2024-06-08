@@ -77,7 +77,7 @@ Run the workflow again. This time it should succeed.
 
 
 ## 1.ga-jfrog-primer-build.yaml
-A more complete example showing links to artifacts in JFrog.
+A more complete example showing links to artifacts in JFrog. Run workflow ga-jfrog-primer-build-1
 Before you run this workflow, change the GH repo variable JF_URL to the url of your JFrog instance.
 
 
