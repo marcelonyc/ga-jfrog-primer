@@ -1,4 +1,4 @@
-name: ga-jfrog-primer-build-marcelo # This cannot be dynamic. Change it to match your build name (read README).
+name: ga-jfrog-primer-build-<UNIQUE_ID> # This cannot be dynamic. Change it to match your build name (read README).
 on: workflow_dispatch
     
 permissions:

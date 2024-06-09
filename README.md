@@ -29,8 +29,7 @@ You can read detailed documentation about how OIDC works, but the most important
     - (Optional: Xray) Add the build to index resources By Pattern
         - Go to Administration->Xray Setting->Index Resources->Builds->Manage Builds
         - Select By Pattern
-        - Build Name Include Pattern: ga-jfrog-primer-build-<UNIQUE_ID>
-
+        - Build Name Include Pattern: `ga-jfrog-primer-build-<UNIQUE_ID>/**`
 
 
 ## 1.ga-jfrog-primer-oidc.yaml
