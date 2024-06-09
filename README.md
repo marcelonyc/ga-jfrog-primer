@@ -29,7 +29,7 @@ You can read detailed documentation about how OIDC works, but the most important
     - (Optional: Xray) Add the build to index resources By Pattern
         - Go to Administration->Xray Setting->Index Resources->Builds->Manage Builds
         - Select By Pattern
-        - Build Name Include Pattern: ga-jfrog-build-<UNIQUE_ID>
+        - Build Name Include Pattern: ga-jfrog-primer-build-<UNIQUE_ID>
 
 
 
@@ -80,7 +80,12 @@ Run the workflow again. This time it should succeed.
 
 ## 1.ga-jfrog-primer-build.yaml
 A more complete example showing links to artifacts in JFrog. Run workflow ga-jfrog-primer-build-1
-Before you run this workflow, change the GH repo variable JF_URL to the url of your JFrog instance.
+Before you run this workflow, 
+1. Change the GH repo variable JF_URL to the url of your JFrog instance.
+2. Change the build name in the yaml (ga-jfrog-primer-build-1) to your build 
+3. Commit and push the changes
+4. Run workflow ga-jfrog-primer-build-1
+
 
 
 
