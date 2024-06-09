@@ -9,8 +9,10 @@ You can read detailed documentation about how OIDC works, but the most important
 ## Pre-reqs and Set up
 
 - Fork this project in GitHub
-- Setup OIDC integration in JFrog
-    - NOTE: **at this point, do not set identity mapping**
+- Setup OIDC integration in JFrog 
+    - Administration->Platform Management->Manage Integrations (https://<JFROG URL>/ui/admin/configuration/integrations)
+    - New Integration->OpenID Connect
+        - NOTE: **at this point, do not set identity mapping**
     - Provider Name: remember this, you will need it.
     - Provider Type: GitHub
     - Leave the rest blank
@@ -34,7 +36,7 @@ You can read detailed documentation about how OIDC works, but the most important
 ## 1.ga-jfrog-primer-oidc.yaml
 In this action we will explore the token we receive from GitHub. I am taking you through this because you will need to understand the payload to construct a claim for the identity mapping. The only purpose of this action is to intercept the token and review it. 
 
-NOTE: The action is expected to fail. Wwe are only looking to get the Token from GH.
+NOTE: The action is expected to fail. We are only looking to get the Token from GH.
 
 1. Go to https://webhook.site 
 2. Copy url (Eg. webhook.site/f90405ea-3192-44c7-b8c5-0618011f0949)
@@ -48,7 +50,7 @@ NOTE: The action is expected to fail. Wwe are only looking to get the Token from
 7. Go to https://jwt.io and paste the token into the Encoded text box.
 ![Image](assets/jwt-payload.png)
 
-Use the keys in your PAYLOAD DATA to setup Claims JSON in the identity mapping in JFRog. JFrog expects a key to match between GitHub and JFrog.
+Use the keys in your PAYLOAD DATA to setup Claims JSON in the identity mapping in JFRog. JFrog expects a key to match between what is receives  from GitHub and what you set in Claims JSON JFrog. It must be an exact match on one or more keys.
 
 For example
 
